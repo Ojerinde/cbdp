@@ -1,0 +1,92 @@
+.attendance-img {
+  height: 50rem;
+}
+
+.attendance-box {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(../../assets/attendanceImg.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 80vh;
+  position: relative;
+  margin-bottom: 5rem;
+}
+
+.section-attendance {
+  padding: 4rem 10rem;
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
+  text-align: center;
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 40rem;
+  width: 50%;
+  border-radius: 12px;
+}
+.form-group {
+  margin-bottom: 2rem;
+}
+
+.attendance__button {
+  padding: 1.2rem 2.4rem;
+  font-size: 2rem;
+  /* border: 0.1rem solid rgb(112, 107, 107); */
+  color: #fff;
+  background-color: #0f172a;
+  outline: none;
+  border-radius: 100px;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+.attendance__label {
+  font-size: 2rem;
+  color: #0f172a;
+  text-align: left;
+  display: inline-block;
+  margin-right: 1rem;
+
+  transition: all 0.3s;
+}
+.attendance__input {
+  padding: 0.3rem.7rem;
+  font-size: 1.8rem;
+  font-family: inherit;
+  color: inherit;
+  border-radius: 100px;
+  outline: none;
+}
+
+.attendance__input:focus {
+  border: 0.5px solid #0f172a;
+}
+.hidden {
+  display: none;
+}
+
+.attendance__checkbox {
+  width: 6rem;
+}
+
+.success,
+.error {
+  font-size: 2rem;
+  animation: moneinbottom 0.8s ease-out;
+}
+.modal-control {
+  width: 24px;
+  height: 24px;
+}
+
+@keyframes moneinbottom {
+  0% {
+    opacity: 0;
+    transform: translateY(5rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}

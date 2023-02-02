@@ -1,25 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes, useNavigate } from "react-router-dom";
 
-function App() {
+import { ErrorBoundary } from "react-error-boundary";
+import Button from "./components/UI/Button/Button";
+import Login from "./pages/Login/Login";
+import SignUp from "./pages/SignUp/SignUp";
+import Home from "./pages/Home/Home";
+import CourseDetails from "./pages/CourseDetails/CourseDetail";
+import CourseDetailsHome from "./pages/CourseDetails/CourseDetailsHome";
+
+import "./App.css";
+import ErrorPage from "./pages/404Page/ErrorPage";
+// Error Boundary FallbackComponent: This is the function that will be called whenever the errorboundary component caught an error
+const ErrorFallback = (props) => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div role="alert" className="boundary__error">
+      <p>Something went wrong!</p>
+      <pre>{props.error.message}</pre>
+      <Button onClick={props.resetErrorBoundary}>Restart app</Button>
     </div>
   );
-}
+};
 
+const App = () => {
+  const navigate = useNavigate();
+
+  return (
+    <ErrorBoundary
+      FallbackComponent={ErrorFallback}
+      onReset={() => {
+        navigate("/");
+      }}
+    >
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+
+        {/* Nexted routes */}
+        <Route path="/courses" element={<CourseDetailsHome />}>
+          <Route path=":syllabus" element={<CourseDetails />} />
+        </Route>
+
+        {/* Routes that will be matched if none of tthe route(s) is matched */}
+        <Route path="*" element={<ErrorPage />} />
+      </Routes>
+    </ErrorBoundary>
+  );
+};
 export default App;
