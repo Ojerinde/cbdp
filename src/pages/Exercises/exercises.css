@@ -1,0 +1,33 @@
+.courses-exercise-box {
+  padding: 9.6rem;
+  list-style: none;
+}
+
+.exercise-heading {
+  font-size: 2rem;
+  /* margin-bottom: 1.2rem; */
+  padding: 2rem;
+  background-color: #7b9e89;
+  /* border: 2px solid #0f172a; */
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  color: #fff;
+}
+.exercise-div {
+  padding: 1rem 2rem 2rem 2rem;
+  /* border: 0.05px solid #0f172a; */
+  margin-bottom: 5.2rem;
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.1);
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+.exercise-div input {
+  margin-top: 1.2rem;
+  margin-bottom: 1.8rem;
+}
+.exercise-div input:last-child {
+  margin-bottom: 1.8rem;
+}
+.exercise-div label {
+  margin-left: 1.5rem;
+}

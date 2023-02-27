@@ -35,12 +35,11 @@
 .course-description {
   /* font-size: 1.8rem; */
   text-align: justify;
-  margin-bottom: 3.2rem;
 }
 
 .course-1 {
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-  /* padding: 4rem; */
+  /* padding: 2rem; */
   border-radius: 12px;
   /* height: 50rem; */
   /* text-align: center; */
@@ -89,12 +88,14 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  font-weight: 400;
 }
 .course-description {
   color: #343a40;
   font-size: 1.6rem;
+  padding: 4rem 4rem 2rem 4rem;
 }
 
 .text-centering {
-  padding: 4rem;
+  padding: 3rem;
 }

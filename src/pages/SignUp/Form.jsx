@@ -130,8 +130,8 @@ const Form = (props) => {
 
     // Send form details to backend
     props.onSubmit({
-      name: form.name,
-      phone: form.phone,
+      fullName: form.name,
+      phoneNumber: form.phone,
       password: form.password,
     });
 

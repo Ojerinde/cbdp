@@ -4,24 +4,24 @@ const Dummydata = [
   {
     syllabus: "HTML",
     description:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur necessitatibus illum, quia nemo sint dolorem commodi quasi, quod vero deserunt eaque. Optio quas alias minus ad expedita, dolores sunt eligendi",
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur necessitatibus illum, quia nemo sint dolorem commodi quasi, quod vero deserunt eaque. Optio quas alias minus ad expedita, dolores ",
   },
   {
     syllabus: "CSS",
     description:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur necessitatibus illum, quia nemo sint dolorem commodi quasi, quod vero deserunt eaque. Optio quas alias minus ad expedita, dolores sunt eligendi",
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur necessitatibus illum, quia nemo sint dolorem commodi quasi, quod vero deserunt eaque. Optio quas alias minus ad expedita, dolores ",
   },
   {
     syllabus: "JavaScript",
     description:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur necessitatibus illum, quia nemo sint dolorem commodi quasi, quod vero deserunt eaque. Optio quas alias minus ad expedita, dolores sunt eligendi",
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur necessitatibus illum, quia nemo sint dolorem commodi quasi, quod vero deserunt eaque. Optio quas alias minus ad expedita, dolores ",
   },
 ];
 
 const Courses = () => {
   return (
-    <section class="section-courses">
-      <ul class="courses-box">
+    <section className="section-courses" id="courses">
+      <ul className="courses-box">
         {Dummydata.map((course) => (
           <CourseItem
             syllabus={course.syllabus}
