@@ -8,19 +8,28 @@ import Navigation from "../../components/Navigation/Navigation";
 import Form from "./Form";
 
 import classes from "./SignUp.module.css";
+import { useNavigate } from "react-router-dom";
 const SignUp = () => {
+  const navigate = useNavigate();
   // Using a custom hook
   const { isLoading, error, fetchRequest: createAccount } = useFetch();
   // A function that will get response from the request made
-  const getResponseData = useCallback((responseObj) => {
-    if (responseObj?.success) {
-    }
-  }, []);
+  const getResponseData = useCallback(
+    (responseObj) => {
+      console.log(responseObj);
+      if (responseObj?.id) {
+        navigate("/courses");
+      } else {
+        console.log(responseObj, "error");
+      }
+    },
+    [navigate]
+  );
 
   const signUpHandler = async (formData) => {
     createAccount(
       {
-        url: "#",
+        url: "https://cbdp-lms-apis.onrender.com/api/users",
         method: "POST",
         body: formData,
         headers: {
@@ -35,7 +44,7 @@ const SignUp = () => {
     <>
       <Navigation />
       <div className={classes.login}>
-        <h1 className={classes.h1}>Hello!</h1>
+        <h1 className={classes.h1}>Sign up</h1>
         <Form onSubmit={signUpHandler} isLoading={isLoading} error={error} />
       </div>
       <Footer />
