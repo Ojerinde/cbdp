@@ -49,12 +49,18 @@ const Navigation = () => {
                 <Link to="/about">About</Link>
               </li>
               <li>
-                <button onClick={scrollHandler.bind(null, "courses")}>
+                <button
+                  className="nav-btn"
+                  onClick={scrollHandler.bind(null, "courses")}
+                >
                   Courses
                 </button>
               </li>
               <li>
-                <button onClick={scrollHandler.bind(null, "attendance")}>
+                <button
+                  className="nav-btn"
+                  onClick={scrollHandler.bind(null, "attendance")}
+                >
                   Attendance
                 </button>
               </li>
