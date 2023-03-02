@@ -3,7 +3,7 @@
   padding: 4rem;
   margin: 7rem auto;
   text-align: center;
-  font-family: 'Manrope';
+  font-family: "inter", sans-serif;
 }
 .h1 {
   font-size: 5rem;
@@ -24,11 +24,13 @@
 }
 
 .button {
-  padding: 1.5rem 3rem;
-  font-size: 1.4rem;
+  padding: 1.6rem 3rem;
+  font-size: 1.8rem;
   background: #102a63;
   color: #ffffff;
   transition: all 0.3s;
+  border-radius: 12px;
+  border: none;
 }
 
 .button:hover {
