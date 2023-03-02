@@ -31,3 +31,13 @@
 .exercise-div label {
   margin-left: 1.5rem;
 }
+.submit__button {
+  font-size: 1.4rem;
+  border: 0.1rem solid #7b9e89;
+}
+.retry__button {
+  font-size: 1.2rem;
+  margin-left: 1rem;
+  border: 0.1rem solid #7b9e89;
+}
+
