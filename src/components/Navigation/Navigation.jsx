@@ -52,7 +52,7 @@ const Navigation = () => {
                 <button
                   className="nav-btn"
                   onClick={scrollHandler.bind(null, "courses")}
-                >
+
                   Courses
                 </button>
               </li>
@@ -61,6 +61,7 @@ const Navigation = () => {
                   className="nav-btn"
                   onClick={scrollHandler.bind(null, "attendance")}
                 >
+
                   Attendance
                 </button>
               </li>

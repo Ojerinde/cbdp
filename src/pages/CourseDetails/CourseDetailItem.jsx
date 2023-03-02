@@ -15,11 +15,12 @@ const CourseDetailItem = ({ index, title, description, paragraph, links }) => {
           <p>{paragraph}</p>
           <ul>
             {description.map((desc, index) => (
-              <li key={index}>{desc}</li>
+              <li index={index}>{desc}</li>
             ))}
             {links &&
               links.map((link, index) => (
                 <li key={index}>
+
                   {link?.title === "Youtube" && (
                     <Link
                       className="courses-link"

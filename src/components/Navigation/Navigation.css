@@ -9,7 +9,9 @@
 }
 .box {
   display: flex;
+
   gap: 10rem;
+
   align-items: center;
 }
 .logo {
@@ -18,8 +20,10 @@
 }
 .log-in-box {
   display: flex;
+
   gap: 7rem;
   margin-left: 5rem;
+
 }
 
 .main-nav ul {
