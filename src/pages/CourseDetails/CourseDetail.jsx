@@ -1,30 +1,18 @@
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
 import Navigation from "../../components/Navigation/Navigation";
 import CourseDetailItem from "./CourseDetailItem";
 import "./CourseDetails.css";
-const DummyData = [
-  {
-    description: [
-      "Browsers do not display the HTML tags, but use them to render    the content of the page.",
-      " HTML describes the structure of Web pages using markup",
-    ],
-    title: "Introduction",
-    paragrapgh:
-      "HTML is the standard markup anguage for creating Web pages,it  stands for Hyper Text Markup Language. HTML describes the  structure of Web pages using markup.",
-  },
-  {
-    description: [
-      "Browsers do not display the HTML tags, but use them to render    the content of the page.",
-      " HTML describes the structure of Web pages using markup",
-    ],
-    title: "HTML ELEMENTS",
-    paragrapgh:
-      "HTML is the standard markup anguage for creating Web pages,it  stands for Hyper Text Markup Language. HTML describes the  structure of Web pages using markup.",
-  },
-];
+import { getSyllabusContents } from "./DataBanks";
+
 const CourseDetails = () => {
+  const [contents, setContents] = useState([]);
   const { syllabus } = useParams();
+  useEffect(() => {
+    const contents = getSyllabusContents(syllabus.toLowerCase());
+    setContents((prev) => contents);
+  }, [syllabus]);
   return (
     <>
       <Navigation />
@@ -34,12 +22,13 @@ const CourseDetails = () => {
         </div>
         <div className="accordion">
           <ul>
-            {DummyData.map((course, index) => (
+            {contents.map((course, index) => (
               <CourseDetailItem
                 title={course.title}
                 paragraph={course.paragrapgh}
                 description={course.description}
-                key={index}
+                index={index + 1}
+                links={course.links}
               />
             ))}
           </ul>

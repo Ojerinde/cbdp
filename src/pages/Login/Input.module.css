@@ -7,9 +7,11 @@
 }
 
 .label {
-  font-size: 1.6rem;
+  font-size: 2rem;
   margin-bottom: 0.5rem;
-  color: #6f6f6f;
+  color: #343a40;
+  font-family: "inter", sans-serif;
+  font-weight: 400;
 }
 
 .input {
@@ -20,6 +22,8 @@
   font-size: 1.7rem;
   font-weight: 300;
   width: 100%;
+  color: #343a40;
+  font-family: "inter", sans-serif;
 }
 
 .input:focus {
@@ -33,30 +37,21 @@
   letter-spacing: 0.1rem;
 }
 
-.input[type='password']::placeholder {
+.input[type="password"]::placeholder {
   font-size: 1.2rem;
 }
-.input[type='text']::placeholder {
+.input[type="text"]::placeholder {
   font-size: 1.2rem;
 }
 
 .eye {
   position: absolute;
-  top: 53px;
+  top: 58px;
   right: 7%;
-  transform: translateY(-50%);
+  transform: translateY(-10%);
 }
 
 .eyeSvg svg {
   width: 20px;
   height: 20px;
-}
-
-@media screen and (max-width: 1068px) {
-  .input[type='password']::placeholder {
-    font-size: 1rem;
-  }
-  .input[type='text']::placeholder {
-    font-size: 1rem;
-  }
 }

@@ -1,11 +1,27 @@
+import { useRef } from "react";
 import "./Attendance.css";
 const Attendance = () => {
+  const nameRef = useRef();
+  const checkRef = useRef(null);
+
+  const attendanceHandler = (event) => {
+    event.preventDefault();
+
+    const fullName = nameRef.current.value;
+    const checked = checkRef.current.checked;
+
+    console.log(fullName, checked);
+  };
+
   return (
-    <section class="attendance-box">
-      <div class="section-attendance">
+    <section className="attendance-box" id="attendance">
+      <div className="section-attendance">
         <form id="attendance__form">
-          <div class="form-group">
-            <label for="fullname" class="attendance__label">
+          <p className="form__heading">
+            Enter your full name and mark the checkbok below for your attendance
+          </p>
+          <div className="form-group">
+            <label htmlFor="fullname" className="attendance__label">
               Full Name
             </label>
             <input
@@ -13,33 +29,39 @@ const Attendance = () => {
               id="fullname"
               name="fullname"
               placeholder="Enter your full name"
-              class="attendance__input"
+              className="attendance__input"
+              ref={nameRef}
             />
           </div>
-          <div class="form-group">
-            <label for="attendance" class="attendance__label left">
+          <div className="form-group">
+            <label htmlFor="attendance" className="attendance__label left">
               Check to mark attendance
             </label>
             <input
               type="checkbox"
               id="attendance"
-              class="attendance__checkbox"
+              className="attendance__checkbox"
               name="checkbox"
+              ref={checkRef}
             />
           </div>
-          <button type="submit" class="attendance__button">
+          <button
+            type="submit"
+            onClick={attendanceHandler}
+            className="attendance__button"
+          >
             Submit
           </button>
         </form>
-        <div class="error hidden">
+        <div className="error hidden">
           An error occured{" "}
           <span>
-            <button class="close__modal">
-              <ion-icon class="modal-control" name="close"></ion-icon>
+            <button className="close__modal">
+              <ion-icon className="modal-control" name="close"></ion-icon>
             </button>
           </span>
         </div>
-        <div class="success hidden">Success</div>
+        <div className="success hidden">Success</div>
       </div>
     </section>
   );

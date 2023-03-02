@@ -9,7 +9,9 @@
 }
 .box {
   display: flex;
-  gap: 12rem;
+
+  gap: 10rem;
+
   align-items: center;
 }
 .logo {
@@ -18,15 +20,10 @@
 }
 .log-in-box {
   display: flex;
-  gap: 3rem;
-  margin-left: 12rem;
-}
-.main {
-  height: 100vh;
-  /* max-width: 140rem; */
-  margin: 0 auto;
-  background-color: #f7f7f7;
-  clip-path: polygon(0 0, 100% 0, 100% 90vh, 0 100%);
+
+  gap: 7rem;
+  margin-left: 5rem;
+
 }
 
 .main-nav ul {
@@ -59,4 +56,17 @@
   text-decoration: none;
   border-radius: 8px;
   font-weight: 600;
+}
+.nav-btn {
+  font-size: 1.8rem;
+  margin-right: 8rem;
+  color: #fff;
+  border: none;
+  transition: all 0.3s;
+  font-weight: 400;
+  background-color: #0f172a;
+  font-family: "inter", sans-serif;
+}
+.nav-btn:hover {
+  color: #f59e0b;
 }

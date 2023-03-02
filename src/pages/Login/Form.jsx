@@ -52,7 +52,7 @@ const Form = (props) => {
 
     // Send form details to backend
     props.onSubmit({
-      name: form.name,
+      fullName: form.name,
       password: form.password,
     });
   };
@@ -61,10 +61,10 @@ const Form = (props) => {
     <form className={classes.login__form} onSubmit={submitHandler}>
       <Input
         id="name"
-        label="Name"
+        label=" Full Name"
         type="name"
         invalid={!form.nameIsValid && form.nameIsFocus ? "invalid" : ""}
-        placeholder="example@name.com"
+        placeholder="Enter your full Name"
         value={form.name}
         onChange={nameOnChangeHandler}
       />

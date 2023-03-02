@@ -10,13 +10,18 @@ import CourseDetailsHome from "./pages/CourseDetails/CourseDetailsHome";
 
 import "./App.css";
 import ErrorPage from "./pages/404Page/ErrorPage";
+import Exercise from "./pages/Exercises/Exercises";
+import AboutUs from "./pages/AboutUs/AboutUs";
+
 // Error Boundary FallbackComponent: This is the function that will be called whenever the errorboundary component caught an error
 const ErrorFallback = (props) => {
   return (
     <div role="alert" className="boundary__error">
-      <p>Something went wrong!</p>
+      <p className="error__message">Something went wrong!</p>
       <pre>{props.error.message}</pre>
-      <Button onClick={props.resetErrorBoundary}>Restart app</Button>
+      <Button className="error__button" onClick={props.resetErrorBoundary}>
+        Restart app
+      </Button>
     </div>
   );
 };
@@ -35,10 +40,14 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/about" element={<AboutUs />} />
 
         {/* Nexted routes */}
         <Route path="/courses" element={<CourseDetailsHome />}>
           <Route path=":syllabus" element={<CourseDetails />} />
+
+          <Route path=":syllabus/:topic/exercises" element={<Exercise />} />
+
         </Route>
 
         {/* Routes that will be matched if none of tthe route(s) is matched */}

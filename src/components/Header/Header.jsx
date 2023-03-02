@@ -2,7 +2,12 @@ import Navigation from "../Navigation/Navigation";
 import headerImg from "../../assets/header.png";
 
 import "./Header.css";
+import { Link } from "react-router-dom";
 const Header = () => {
+  const scrollHandler = () => {
+    const coursesELe = document.getElementById("courses");
+    coursesELe.scrollIntoView({ behavior: "smooth" });
+  };
   return (
     <>
       <header className="main-header">
@@ -20,9 +25,9 @@ const Header = () => {
                 proficient.
               </p>
 
-              <a href="/" className="course-link">
+              <Link to="#" className="course-link" onClick={scrollHandler}>
                 Start Learning
-              </a>
+              </Link>
             </div>
 
             <div className="illustration-box">
