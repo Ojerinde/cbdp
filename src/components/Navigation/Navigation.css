@@ -9,7 +9,7 @@
 }
 .box {
   display: flex;
-  gap: 12rem;
+  gap: 7rem;
   align-items: center;
 }
 .logo {
@@ -18,15 +18,8 @@
 }
 .log-in-box {
   display: flex;
-  gap: 3rem;
-  margin-left: 12rem;
-}
-.main {
-  height: 100vh;
-  /* max-width: 140rem; */
-  margin: 0 auto;
-  background-color: #f7f7f7;
-  clip-path: polygon(0 0, 100% 0, 100% 90vh, 0 100%);
+  gap: 5rem;
+  margin-left: 7rem;
 }
 
 .main-nav ul {

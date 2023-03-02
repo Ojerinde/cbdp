@@ -18,8 +18,9 @@ const Login = () => {
   // A function that will get response from the request made
   const getResponseData = useCallback(
     (responseObj) => {
-      if (responseObj?.message === "Logged in Successfully") {
-        navigate("/server");
+      console.log(responseObj);
+      if (responseObj?.id) {
+        navigate("/courses");
       } else {
         console.log(responseObj, "error");
       }
@@ -28,9 +29,10 @@ const Login = () => {
   );
 
   const signInHandler = async (formData) => {
+    console.log(formData);
     LoginRequest(
       {
-        url: "#",
+        url: "https://cbdp-lms-apis.onrender.com/api/auth",
         method: "POST",
         body: formData,
         headers: {
@@ -45,7 +47,7 @@ const Login = () => {
     <>
       <Navigation />
       <div className={classes.login} data-testid="login__page">
-        <h1 className={classes.h1}>Welcome back!</h1>
+        <h1 className={classes.h1}>sign in</h1>
         <Form onSubmit={signInHandler} isLoading={isLoading} error={error} />
       </div>
       <Footer />

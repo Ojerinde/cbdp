@@ -2,32 +2,37 @@ import Navigation from "../Navigation/Navigation";
 import headerImg from "../../assets/header.png";
 
 import "./Header.css";
+import { Link } from "react-router-dom";
 const Header = () => {
+  const scrollHandler = () => {
+    const coursesELe = document.getElementById("courses");
+    coursesELe.scrollIntoView({ behavior: "smooth" });
+  };
   return (
     <>
-      <header class="main-header">
+      <header className="main-header">
         <Navigation />
-        <main class="main">
-          <div class="main-box">
-            <div class="main-content-box">
-              <h1 class="main-heading">
+        <main className="main">
+          <div className="main-box">
+            <div className="main-content-box">
+              <h1 className="main-heading">
                 Build Skills With Experts Any Time Anywhere
               </h1>
-              <p class="main-description">
+              <p className="main-description">
                 CBDP coding learning space is where students come to get most if
                 what is being taught in class and also to have a basic knowledge
                 of most programming Language to become more efficient and
                 proficient.
               </p>
 
-              <a href="/" class="course-link">
+              <Link to="#" className="course-link" onClick={scrollHandler}>
                 Start Learning
-              </a>
+              </Link>
             </div>
 
-            <div class="illustration-box">
+            <div className="illustration-box">
               <img
-                class="illustration-img"
+                className="illustration-img"
                 src={headerImg}
                 alt="illustration of a boy with the computer"
               />

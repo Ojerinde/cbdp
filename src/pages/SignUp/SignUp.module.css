@@ -1,16 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lato:wght@300;400;700&family=Montserrat:wght@300;400;500;700&family=Open+Sans:wght@300;400;500;700&family=Roboto:wght@400;500;700&family=Source+Serif+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap");
+
 .login {
   width: 35%;
   margin: 0 auto;
   padding: 6rem 0;
-  font-family: 'Manrope';
+  font-family: "inter", sans-serif;
   font-style: normal;
 }
 .h1 {
   font-weight: 700;
-  font-size: 4.8rem;
+  font-size: 3.2rem;
   line-height: 6.6rem;
-  color: #353535;
-  text-align: center;
+  text-align: left;
+  color: #343a40;
 }
 .div {
   flex-basis: 30%;

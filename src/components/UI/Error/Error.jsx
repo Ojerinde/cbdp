@@ -1,4 +1,5 @@
 import { ImCross } from "react-icons/im";
+import "./ error.css";
 
 const Error = (props) => {
   return (
