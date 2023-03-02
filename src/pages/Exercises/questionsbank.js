@@ -3,7 +3,7 @@ const allQuestions = {
     introduction: [
       {
         id: 1,
-        question: "What is the full meaning of HTML",
+        question: "What is the full meaning of HTML?",
         answer: "option b",
         options: ["option a", "option b", "option c", "option d"],
       },
@@ -11,7 +11,7 @@ const allQuestions = {
     htmlElements: [
       {
         id: 1,
-        question: "What are HTML elements",
+        question: "What are HTML elements?",
         answer: "option b",
         options: ["option a", "option b", "option c", "option d"],
       },
