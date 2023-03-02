@@ -45,7 +45,7 @@ const App = () => {
         {/* Nexted routes */}
         <Route path="/courses" element={<CourseDetailsHome />}>
           <Route path=":syllabus" element={<CourseDetails />} />
-          <Route path=":syllabus/exercise" element={<Exercise />} />
+          <Route path=":syllabus/:topic/exercises" element={<Exercise />} />
         </Route>
 
         {/* Routes that will be matched if none of tthe route(s) is matched */}

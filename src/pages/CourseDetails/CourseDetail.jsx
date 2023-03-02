@@ -20,13 +20,13 @@ const DummyData = [
       },
       {
         title: "Exercise",
-        URL: "/courses/HTML/exercise",
+        URL: "/courses/HTML/introduction/exercises",
       },
     ],
   },
   {
     description: [
-      " <tagname>Content goes here...</tagname> ",
+      "<tagname>Content goes here...</tagname> ",
       "The HTML element is everything from the start tag to the end tag.",
       "Start tag Element content End tag",
       "<h1> My First Heading </h1>",
@@ -43,7 +43,7 @@ const DummyData = [
       },
       {
         title: "Exercise",
-        URL: "/courses/CSS/exercise",
+        URL: "/courses/HTML/htmlElements/exercises",
       },
     ],
   },
@@ -64,7 +64,7 @@ const DummyData = [
       },
       {
         title: "Exercise",
-        URL: "/courses/CSS/exercise",
+        URL: "/courses/HTML/htmlAttributes/exercises",
       },
     ],
   },
@@ -95,48 +95,7 @@ const DummyData = [
       },
       {
         title: "Exercise",
-        URL: "/courses/CSS/exercise",
-      },
-    ],
-  },
-  {
-    description: [
-      "Browsers do not display the HTML tags, but use them to render    the content of the page.",
-      " HTML describes the structure of Web pages using markup",
-    ],
-    title: "HTML Paragraph",
-    paragrapgh:
-      "HTML is the standard markup anguage for creating Web pages,it  stands for Hyper Text Markup Language. HTML describes the  structure of Web pages using markup.",
-    links: [
-      {
-        title: "Youtube",
-        URL: "https://www.youtube.com/watch?v=hu-q2zYwEYs&list=PL4cUxeGkcC9ivBf_eKCPIAYXWzLlPAm6G",
-      },
-      {
-        title: "Exercise",
-        URL: "/courses/CSS/exercise",
-      },
-    ],
-  },
-  {
-    description: [
-      "The HTML style attribute has the following syntax",
-      '<tagname style="property:value;">',
-      " HTML describes the structure of Web pages using markup",
-      "The property is a CSS property. The value is a CSS value.",
-    ],
-    title: "HTML styles",
-
-    paragrapgh:
-      "Setting the style of an HTML element, can be done with the style attribute.",
-    links: [
-      {
-        title: "Youtube",
-        URL: "https://www.youtube.com/watch?v=mbeT8mpmtHA&list=PL4cUxeGkcC9ivBf_eKCPIAYXWzLlPAm6G&index=2",
-      },
-      {
-        title: "Exercise",
-        URL: "/courses/CSS/exercise",
+        URL: "/courses/HTML/htmlHeadings/exercises",
       },
     ],
   },

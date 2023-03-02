@@ -1,78 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
 import Navigation from "../../components/Navigation/Navigation";
+import Button from "../../components/UI/Button/Button";
 import "./exercises.css";
-
-const Dummydata = [
-  {
-    id: 1,
-    question: "What is the fullmeaning of HTML",
-    answer: "option b",
-    options: ["option a", "option b", "option c", "option d"],
-  },
-
-  {
-    id: 2,
-    question: "What is the full meaning of HTML",
-    answer: "option c",
-    options: ["option a", "option b", "option c", "option d"],
-  },
-  {
-    id: 3,
-    question: "What is the full meaning of HTML",
-    answer: "option c",
-    options: ["option a", "option b", "option c", "option d"],
-  },
-  {
-    id: 4,
-    question: "What is the full meaning of HTML",
-    answer: "option c",
-    options: ["option a", "option b", "option c", "option d"],
-  },
-  {
-    id: 5,
-    question: "What is the full meaning of HTML",
-    answer: "option c",
-    options: ["option a", "option b", "option c", "option d"],
-  },
-  {
-    id: 6,
-    question: "What is the full meaning of HTML",
-    answer: "option c",
-    options: ["option a", "option b", "option c", "option d"],
-  },
-  {
-    id: 7,
-    question: "What is the full meaning of HTML",
-    answer: "option c",
-    options: ["option a", "option b", "option c", "option d"],
-  },
-  {
-    id: 8,
-    question: "What is the full meaning of HTML",
-    answer: "option c",
-    options: ["option a", "option b", "option c", "option d"],
-  },
-  {
-    id: 9,
-    question: "What is the full meaning of HTML",
-    answer: "option c",
-    options: ["option a", "option b", "option c", "option d"],
-  },
-  {
-    id: 10,
-    question: "What is the full meaning of HTML",
-    answer: "option c",
-    options: ["option a", "option b", "option c", "option d"],
-  },
-];
+import { getQuestions } from "./questionsbank";
 
 const Exercise = () => {
   const [allAnswers, setAnswers] = useState([]);
   const [submitted, setSubmitted] = useState(false);
+  const [totalScore, setTotalScore] = useState(0);
+  const [showScore, setshowScore] = useState(false);
+  const navigate = useNavigate();
+  const [questions, setQuestions] = useState([]);
+  const { topic, syllabus } = useParams();
+  console.log(topic, syllabus);
+
+  useEffect(() => {
+    const syllabusToLowercase = syllabus.toLowerCase();
+    const allQuestions = getQuestions(syllabusToLowercase, topic);
+    setQuestions((prev) => allQuestions);
+  }, [syllabus, topic]);
 
   const answerHandler = (id, answer) => {
-    const existingQuestion = allAnswers.find((question) => question.id === id);
+    const existingQuestion = allAnswers?.find((question) => question.id === id);
     if (existingQuestion) {
       existingQuestion.answer = answer;
     } else {
@@ -85,24 +36,33 @@ const Exercise = () => {
   const submitHandler = (event) => {
     event.preventDefault();
     setSubmitted(true);
+    setshowScore(true);
   };
 
   const findQuestion = (id, correctAnswer) => {
-    const questionAnswer = allAnswers.find((answer) => answer.id === id);
-    console.log(questionAnswer);
-    console.log(id, correctAnswer, questionAnswer.answer);
-    return correctAnswer === questionAnswer.answer;
+    setSubmitted(false);
+    const questionAnswer = allAnswers?.find((answer) => answer.id === id);
+    if (correctAnswer === questionAnswer?.answer) {
+      setTotalScore((prev) => {
+        return (prev = prev + 1);
+      });
+    }
+    return correctAnswer === questionAnswer?.answer;
+  };
+  const retryHandler = () => {
+    navigate(0);
   };
   return (
     <>
       <Navigation />
       <section className="courses-exercise"></section>
       <ul className="courses-exercise-box">
-        {Dummydata.map((item, index) => (
+        {questions.map((item, index) => (
           <li key={index}>
             <h4 className="exercise-heading">{item.question}</h4>
             <div className="exercise-div">
               <label>
+                (A)
                 <input
                   type="radio"
                   name={item.id}
@@ -113,6 +73,7 @@ const Exercise = () => {
               </label>
               <br />
               <label>
+                (B)
                 <input
                   type="radio"
                   name={item.id}
@@ -123,6 +84,7 @@ const Exercise = () => {
               </label>
               <br />
               <label>
+                (C)
                 <input
                   type="radio"
                   name={item.id}
@@ -133,6 +95,7 @@ const Exercise = () => {
               </label>
               <br />
               <label>
+                (D)
                 <input
                   type="radio"
                   name={item.id}
@@ -151,7 +114,19 @@ const Exercise = () => {
           </li>
         ))}
       </ul>
-      <button onClick={submitHandler}>Submit</button>
+      {showScore === true && (
+        <p>
+          You score a total of {totalScore} out of {questions.length}
+          <span>
+            <Button className="retry__button" onClick={retryHandler}>
+              Retry
+            </Button>
+          </span>
+        </p>
+      )}
+      <Button className="submit__button" onClick={submitHandler}>
+        Submit
+      </Button>
       <Footer />
     </>
   );
