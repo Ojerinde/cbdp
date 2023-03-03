@@ -18,8 +18,8 @@ const Login = () => {
   // A function that will get response from the request made
   const getResponseData = useCallback(
     (responseObj) => {
-      console.log(responseObj);
-      if (responseObj?.id) {
+      if (responseObj?.status === "success") {
+        console.log(responseObj, "success");
         navigate("/courses");
       } else {
         console.log(responseObj, "error");

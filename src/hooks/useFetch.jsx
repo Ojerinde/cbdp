@@ -1,17 +1,17 @@
-import { useReducer, useCallback } from 'react';
+import { useReducer, useCallback } from "react";
 
 // This is the state initial data
 const initialState = {
   isLoading: false,
-  error: { hasError: false, message: '' },
+  error: { hasError: false, message: "" },
 };
 
 // This is the function that will be dispatched whenever an action is dispatched.
 const fetchReducer = (state, action) => {
-  if (action.type === 'LOADING') {
+  if (action.type === "LOADING") {
     return { ...state, isLoading: action.value };
   }
-  if (action.type === 'ERROR') {
+  if (action.type === "ERROR") {
     return { ...state, error: action.value };
   }
   return initialState;
@@ -23,18 +23,18 @@ const useFetch = () => {
 
   // A function to hide error modal
   const hideModal = () => {
-    dispatchFn({ type: 'ERROR', value: { hasError: false, message: '' } });
+    dispatchFn({ type: "ERROR", value: { hasError: false, message: "" } });
   };
 
   // A function to fetch data
   const fetchRequest = useCallback(
     async (requestConfig, getRequestData = () => {}) => {
-      dispatchFn({ type: 'LOADING', value: true });
-      dispatchFn({ type: 'ERROR', value: { hasError: false, message: '' } });
+      dispatchFn({ type: "LOADING", value: true });
+      dispatchFn({ type: "ERROR", value: { hasError: false, message: "" } });
       try {
         // Fetching data using the configuration provided
         const response = await fetch(requestConfig.url, {
-          method: requestConfig.method ? requestConfig.method : 'GET',
+          method: requestConfig.method ? requestConfig.method : "GET",
           body: requestConfig.body ? JSON.stringify(requestConfig.body) : null,
           headers: requestConfig.headers ? requestConfig.headers : {},
         });
@@ -52,20 +52,20 @@ const useFetch = () => {
       } catch (err) {
         // If an error occured, set the error state
         dispatchFn({
-          type: 'ERROR',
-          value: { hasError: true, message: err.message || 'An error ocurred' },
+          type: "ERROR",
+          value: { hasError: true, message: err.message || "An error ocurred" },
         });
         setTimeout(() => {
           dispatchFn({
-            type: 'ERROR',
-            value: { hasError: false, message: '' },
+            type: "ERROR",
+            value: { hasError: false, message: "" },
           });
         }, 1500);
       }
       // After the request has been made, set the loading state to false
-      dispatchFn({ type: 'LOADING', value: false });
+      dispatchFn({ type: "LOADING", value: false });
     },
-    [],
+    []
   );
 
   // Destcturing the state
@@ -75,3 +75,11 @@ const useFetch = () => {
   return { isLoading, error, hideModal, fetchRequest };
 };
 export default useFetch;
+
+// {
+//   status: "success",
+//   user: {
+//     name: ","
+//     phone: ","
+//   }
+// }

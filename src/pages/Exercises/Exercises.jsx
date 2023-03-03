@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
 import Navigation from "../../components/Navigation/Navigation";
+import "./exercises.css";
 import Button from "../../components/UI/Button/Button";
 import "./exercises.css";
 import { getQuestions } from "./questionsbank";
@@ -14,7 +15,6 @@ const Exercise = () => {
   const navigate = useNavigate();
   const [questions, setQuestions] = useState([]);
   const { topic, syllabus } = useParams();
-  console.log(topic, syllabus);
 
   useEffect(() => {
     const syllabusToLowercase = syllabus.toLowerCase();
@@ -22,26 +22,30 @@ const Exercise = () => {
     setQuestions((prev) => allQuestions);
   }, [syllabus, topic]);
 
-  const answerHandler = (id, answer) => {
-    const existingQuestion = allAnswers?.find((question) => question.id === id);
-    if (existingQuestion) {
-      existingQuestion.answer = answer;
-    } else {
-      setAnswers((prev) => {
-        const newArr = [...prev, { id, answer }];
-        return newArr;
-      });
-    }
-  };
   const submitHandler = (event) => {
     event.preventDefault();
     setSubmitted(true);
     setshowScore(true);
   };
 
+  const answerHandler = (id, option) => {
+    console.log(allAnswers, id, option);
+    const existingQuestion = allAnswers?.filter((ans) => {
+      return ans.id === id;
+    });
+    if (existingQuestion) {
+      const filteredAnswers = allAnswers?.filter((ans) => {
+        return ans.id !== id;
+      });
+      setAnswers((prev) => [...filteredAnswers, { id, option }]);
+    } else {
+      setAnswers((prev) => prev.push({ id, option }));
+    }
+  };
+
   const findQuestion = (id, correctAnswer) => {
     setSubmitted(false);
-    const questionAnswer = allAnswers?.find((answer) => answer.id === id);
+    const questionAnswer = questions?.find((answer) => answer.id === id);
     if (correctAnswer === questionAnswer?.answer) {
       setTotalScore((prev) => {
         return (prev = prev + 1);
@@ -52,6 +56,7 @@ const Exercise = () => {
   const retryHandler = () => {
     navigate(0);
   };
+
   return (
     <>
       <Navigation />

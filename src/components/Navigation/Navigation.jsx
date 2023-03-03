@@ -6,8 +6,6 @@ const Navigation = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const scrollHandler = (section) => {
-    console.log(pathname);
-    console.log(section);
     if (pathname !== "/") {
       navigate("/");
       if (section === "attendance") {

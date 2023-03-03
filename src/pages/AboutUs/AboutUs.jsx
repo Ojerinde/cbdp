@@ -1,6 +1,8 @@
 import Footer from "../../components/Footer/Footer";
 import Navigation from "../../components/Navigation/Navigation";
+
 import Aboutimage from "../../assets/About.jpg";
+
 import "./AboutUs.css";
 
 const AboutUs = () => {
@@ -36,6 +38,7 @@ const AboutUs = () => {
           />
         </div>
       </div>
+
       <Footer />
     </>
   );

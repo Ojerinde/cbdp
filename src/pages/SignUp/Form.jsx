@@ -13,6 +13,7 @@ const Form = (props) => {
   const [form, setForm] = useState({
     name: "",
     password: "",
+    phone: "",
     nameIsValid: false,
     passwordIsValid: false,
     nameIsFocus: false,
@@ -97,7 +98,7 @@ const Form = (props) => {
       return { ...prev, phoneIsFocus: true };
     });
 
-    if (form.phone.length === 8) {
+    if (form.phone.length === 11) {
       setForm((prev) => {
         return { ...prev, phoneIsValid: true };
       });
@@ -171,7 +172,7 @@ const Form = (props) => {
       <Input
         id="phone"
         label="Phone Number"
-        type="number"
+        type="text"
         invalid={!form.phoneIsValid && form.phoneIsFocus ? "invalid" : ""}
         placeholder="Enter your Phone number"
         value={form.phone}

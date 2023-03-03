@@ -16,9 +16,9 @@ const SignUp = () => {
   // A function that will get response from the request made
   const getResponseData = useCallback(
     (responseObj) => {
-      console.log(responseObj);
-      if (responseObj?.id) {
-        navigate("/courses");
+      if (responseObj?.status === "success") {
+        console.log(responseObj, "success");
+        navigate("/login");
       } else {
         console.log(responseObj, "error");
       }
