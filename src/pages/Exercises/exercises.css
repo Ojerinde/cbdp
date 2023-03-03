@@ -32,12 +32,21 @@
   margin-left: 1.5rem;
 }
 .submit__button {
-  font-size: 1.4rem;
-  border: 0.1rem solid #7b9e89;
+  font-size: 1.8rem;
+  font-weight: 600;
+  background-color: #0077b6;
+  color: #fff;
+  border-radius: 100px;
+  padding: 1.2rem 2.4rem;
+  border: none;
+  margin: 1.2rem 1.2rem 2.4rem 1.2rem;
 }
 .retry__button {
   font-size: 1.2rem;
   margin-left: 1rem;
-  border: 0.1rem solid #7b9e89;
+  font-weight: 600;
+}
+.btn-center {
+  text-align: center;
 }
 

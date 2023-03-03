@@ -129,10 +129,11 @@ const Exercise = () => {
           </span>
         </p>
       )}
-      <Button className="submit__button" onClick={submitHandler}>
-        Submit
-      </Button>
-
+      <div className="btn-center">
+        <Button className="submit__button" onClick={submitHandler}>
+          Submit
+        </Button>
+      </div>
       <Footer />
     </>
   );

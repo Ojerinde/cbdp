@@ -4,8 +4,13 @@ const allQuestions = {
       {
         id: 1,
         question: "What is the full meaning of HTML?",
-        answer: "option b",
-        options: ["option a", "option b", "option c", "option d"],
+        answer: "Hyper text markup Language",
+        options: [
+          "Hyper text Marked Language",
+          "Hyper text markup Language ",
+          "Hyper text markdown Language",
+          "Hyping text markup Language",
+        ],
       },
     ],
     htmlElements: [
