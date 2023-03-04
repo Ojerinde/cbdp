@@ -45,13 +45,14 @@ const Exercise = () => {
 
   const findQuestion = (id, correctAnswer) => {
     setSubmitted(false);
-    const questionAnswer = questions?.find((answer) => answer.id === id);
-    if (correctAnswer === questionAnswer?.answer) {
+    const questionAnswer = allAnswers?.find((answer) => answer.id === id);
+    console.log(questionAnswer, correctAnswer);
+    if (correctAnswer === questionAnswer?.option) {
       setTotalScore((prev) => {
         return (prev = prev + 1);
       });
     }
-    return correctAnswer === questionAnswer?.answer;
+    return correctAnswer === questionAnswer?.option;
   };
   const retryHandler = () => {
     navigate(0);
