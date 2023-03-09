@@ -62,10 +62,10 @@ const Form = (props) => {
       return { ...prev, password: e.target.value };
     });
 
-    const { emailIsValid, nameIsValid, passwordIsValid } = form;
+    const { phoneIsValid, nameIsValid, passwordIsValid } = form;
     const isValid = ValidatePassword(e.target.value);
 
-    if (emailIsValid && isValid && nameIsValid && passwordIsValid) {
+    if (phoneIsValid && isValid && nameIsValid && passwordIsValid) {
       setForm((prev) => {
         return { ...prev, formIsValid: true };
       });
