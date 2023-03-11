@@ -1,4 +1,3 @@
-import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Footer from "../../components/Footer/Footer";
@@ -16,20 +15,15 @@ const Login = () => {
   const { isLoading, error, fetchRequest: LoginRequest } = useFetch();
 
   // A function that will get response from the request made
-  const getResponseData = useCallback(
-    (responseObj) => {
-      if (responseObj?.status === "success") {
-        console.log(responseObj, "success");
-        navigate("/courses");
-      } else {
-        console.log(responseObj, "error");
-      }
-    },
-    [navigate]
-  );
+  const getResponseData = (responseObj) => {
+    if (responseObj?.token) {
+      navigate("/");
+    } else {
+      console.log(responseObj, "error");
+    }
+  };
 
   const signInHandler = async (formData) => {
-    console.log(formData);
     LoginRequest(
       {
         url: "https://cbdp-lms-apis.onrender.com/api/auth",

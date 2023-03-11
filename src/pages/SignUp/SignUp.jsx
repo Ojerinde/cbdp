@@ -1,5 +1,3 @@
-import { useCallback } from "react";
-
 import useFetch from "../../hooks/useFetch";
 
 import Footer from "../../components/Footer/Footer";
@@ -9,22 +7,20 @@ import Form from "./Form";
 
 import classes from "./SignUp.module.css";
 import { useNavigate } from "react-router-dom";
+import { SetItemToLocalStorage } from "./lib";
 const SignUp = () => {
   const navigate = useNavigate();
   // Using a custom hook
   const { isLoading, error, fetchRequest: createAccount } = useFetch();
   // A function that will get response from the request made
-  const getResponseData = useCallback(
-    (responseObj) => {
-      if (responseObj?.status === "success") {
-        console.log(responseObj, "success");
-        navigate("/login");
-      } else {
-        console.log(responseObj, "error");
-      }
-    },
-    [navigate]
-  );
+  const getResponseData = (responseObj) => {
+    if (responseObj?.status === "success") {
+      SetItemToLocalStorage("user", responseObj.user);
+      navigate("/login");
+    } else {
+      console.log(responseObj, "error");
+    }
+  };
 
   const signUpHandler = async (formData) => {
     createAccount(
