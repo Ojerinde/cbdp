@@ -1,6 +1,9 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
-import { GetItemFromLocalStorage } from "../../lib/Validations";
+import {
+  GetItemFromLocalStorage,
+  RemoveItemFromLocalStorage,
+} from "../../lib/Validations";
 import "./Navigation.css";
 
 const Navigation = () => {
@@ -33,7 +36,9 @@ const Navigation = () => {
     }
   };
   const isLoggedIn = GetItemFromLocalStorage("isLoggedIn");
-
+  const logoutHandler = () => {
+    RemoveItemFromLocalStorage("isLoggedIn");
+  };
   return (
     <div className="header-box">
       <div className="box">
@@ -69,9 +74,18 @@ const Navigation = () => {
         </div>
       </div>
       <div className="log-in-box">
-        <Link to="/login" className="login-btn">
-          {isLoggedIn?.status !== "success" ? "Login" : "Logout"}
-        </Link>
+        {isLoggedIn?.status !== "success" ? (
+          <Link to="/login" className="login-btn">
+            Login
+          </Link>
+        ) : (
+          <div onClick={logoutHandler}>
+            {" "}
+            <Link to="/" className="login-btn">
+              Logout
+            </Link>
+          </div>
+        )}
         {isLoggedIn?.status !== "success" && (
           <Link to="/signup" className="login-btn">
             Register
