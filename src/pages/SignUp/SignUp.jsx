@@ -7,7 +7,7 @@ import Form from "./Form";
 
 import classes from "./SignUp.module.css";
 import { useNavigate } from "react-router-dom";
-import { SetItemToLocalStorage } from "./lib";
+import { SetItemToLocalStorage } from "../../lib/Validations";
 const SignUp = () => {
   const navigate = useNavigate();
   // Using a custom hook

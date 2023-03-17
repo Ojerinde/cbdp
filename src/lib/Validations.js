@@ -13,6 +13,7 @@ export function ValidatePassword(password) {
   }
   return false;
 }
+
 export function SetItemToLocalStorage(key, payload) {
   localStorage.setItem(key, JSON.stringify(payload));
 }

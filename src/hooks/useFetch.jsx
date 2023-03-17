@@ -33,7 +33,6 @@ const useFetch = () => {
           body: requestConfig.body ? JSON.stringify(requestConfig.body) : null,
           headers: requestConfig.headers ? requestConfig.headers : {},
         });
-        console.log(response);
         // If the response is not ok, throw an error
         if (!response.ok) {
           const responseBody = await response.json();
@@ -43,7 +42,6 @@ const useFetch = () => {
         // If the response is ok, get the data
         const responseBody = await response.json();
         // Send the data to the function that will use it
-        console.log(responseBody, "responseBody");
         getRequestData(responseBody);
       } catch (err) {
         // If an error occured, set the error state

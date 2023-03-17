@@ -1,5 +1,6 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
+import { GetItemFromLocalStorage } from "../../lib/Validations";
 import "./Navigation.css";
 
 const Navigation = () => {
@@ -31,6 +32,7 @@ const Navigation = () => {
       }
     }
   };
+  const isLoggedIn = GetItemFromLocalStorage("isLoggedIn");
 
   return (
     <div className="header-box">
@@ -68,11 +70,13 @@ const Navigation = () => {
       </div>
       <div className="log-in-box">
         <Link to="/login" className="login-btn">
-          Login
+          {isLoggedIn?.status !== "success" ? "Login" : "Logout"}
         </Link>
-        <Link to="/signup" className="login-btn">
-          Register
-        </Link>
+        {isLoggedIn?.status !== "success" && (
+          <Link to="/signup" className="login-btn">
+            Register
+          </Link>
+        )}
       </div>
     </div>
   );

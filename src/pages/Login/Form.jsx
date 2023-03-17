@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ValidatePassword } from "../SignUp/lib";
+import { ValidatePassword } from "../../lib/Validations";
 
 import Input from "./Input";
 import LoadingSpinner from "../../components/UI/LoadingSpinner/LoadingSpinner";

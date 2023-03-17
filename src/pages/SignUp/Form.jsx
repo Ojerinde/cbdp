@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { ValidatePassword } from "./lib";
+import { ValidatePassword } from "../../lib/Validations";
 
 import Input from "../Login/Input";
 import Button from "../../components/UI/Button/Button";
