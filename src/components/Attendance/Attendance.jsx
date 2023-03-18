@@ -145,12 +145,4 @@ const Attendance = () => {
   );
 };
 
-// function validate(req) {
-//   const schema = {
-//     studentId: Joi.string().min(10).max(100),
-//   };
-
-//   return Joi.validate(req, schema);
-// }
-
 export default Attendance;
