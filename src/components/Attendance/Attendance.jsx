@@ -1,5 +1,7 @@
 import { useRef } from "react";
+import Swal from "sweetalert2";
 import "./Attendance.css";
+
 const Attendance = () => {
   const nameRef = useRef();
   const checkRef = useRef(null);
@@ -10,7 +12,22 @@ const Attendance = () => {
     const fullName = nameRef.current.value;
     const checked = checkRef.current.checked;
 
-    console.log(fullName, checked);
+    if (fullName && checked) {
+      Swal.fire({
+        title: "Success",
+        text: "Attendance recorded successfully",
+        icon: "success",
+        confirmButtonText: "OK",
+      });
+      console.log(fullName, checked);
+    } else {
+      Swal.fire({
+        title: "Error",
+        text: "Please enter your full name and check the box to mark attendance",
+        icon: "error",
+        confirmButtonText: "OK",
+      });
+    }
   };
 
   return (
