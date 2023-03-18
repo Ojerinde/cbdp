@@ -24,6 +24,7 @@ const CourseDetails = () => {
           <ul>
             {contents.map((course, index) => (
               <CourseDetailItem
+                key={index}
                 title={course.title}
                 paragraph={course.paragrapgh}
                 description={course.description}

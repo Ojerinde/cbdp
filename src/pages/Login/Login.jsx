@@ -1,10 +1,10 @@
-import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Footer from "../../components/Footer/Footer";
 import Navigation from "../../components/Navigation/Navigation";
 
 import useFetch from "../../hooks/useFetch";
+import { SetItemToLocalStorage } from "../../lib/Validations";
 
 import Form from "./Form";
 import classes from "./Login.module.css";
@@ -16,20 +16,16 @@ const Login = () => {
   const { isLoading, error, fetchRequest: LoginRequest } = useFetch();
 
   // A function that will get response from the request made
-  const getResponseData = useCallback(
-    (responseObj) => {
-      if (responseObj?.status === "success") {
-        console.log(responseObj, "success");
-        navigate("/courses");
-      } else {
-        console.log(responseObj, "error");
-      }
-    },
-    [navigate]
-  );
+  const getResponseData = (responseObj) => {
+    if (responseObj?.status === "success") {
+      SetItemToLocalStorage("isLoggedIn", { status: "success" });
+      navigate("/");
+    } else {
+      console.log(responseObj, "error");
+    }
+  };
 
   const signInHandler = async (formData) => {
-    console.log(formData);
     LoginRequest(
       {
         url: "https://cbdp-lms-apis.onrender.com/api/auth",

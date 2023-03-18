@@ -19,7 +19,7 @@ const Attendance = () => {
         icon: "success",
         confirmButtonText: "OK",
       });
-      console.log(fullName, checked);
+      // console.log(fullName, checked);
     } else {
       Swal.fire({
         title: "Error",

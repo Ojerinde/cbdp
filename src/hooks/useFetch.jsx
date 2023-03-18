@@ -21,11 +21,6 @@ const useFetch = () => {
   // Managing state
   const [fetchState, dispatchFn] = useReducer(fetchReducer, initialState);
 
-  // A function to hide error modal
-  const hideModal = () => {
-    dispatchFn({ type: "ERROR", value: { hasError: false, message: "" } });
-  };
-
   // A function to fetch data
   const fetchRequest = useCallback(
     async (requestConfig, getRequestData = () => {}) => {
@@ -38,7 +33,6 @@ const useFetch = () => {
           body: requestConfig.body ? JSON.stringify(requestConfig.body) : null,
           headers: requestConfig.headers ? requestConfig.headers : {},
         });
-        console.log(response);
         // If the response is not ok, throw an error
         if (!response.ok) {
           const responseBody = await response.json();
@@ -48,7 +42,6 @@ const useFetch = () => {
         // If the response is ok, get the data
         const responseBody = await response.json();
         // Send the data to the function that will use it
-        // console.log(responseBody, 'responseBody');
         getRequestData(responseBody);
       } catch (err) {
         // If an error occured, set the error state
@@ -73,14 +66,6 @@ const useFetch = () => {
   const { isLoading, error } = fetchState;
 
   // Returning the state and the functions
-  return { isLoading, error, hideModal, fetchRequest };
+  return { isLoading, error, fetchRequest };
 };
 export default useFetch;
-
-// {
-//   status: "success",
-//   user: {
-//     name: ","
-//     phone: ","
-//   }
-// }
