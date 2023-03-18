@@ -40,7 +40,7 @@ const SignUp = () => {
     <>
       <Navigation />
       <div className={classes.login}>
-        <h1 className={classes.h1}>Sign up</h1>
+        <h1 className={classes.h1}>Sign Up</h1>
         <Form onSubmit={signUpHandler} isLoading={isLoading} error={error} />
       </div>
       <Footer />

@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { GetItemFromLocalStorage } from "../../lib/Validations";
 import "./Attendance.css";
 const Attendance = () => {
   const nameRef = useRef();
@@ -7,10 +8,13 @@ const Attendance = () => {
   const attendanceHandler = (event) => {
     event.preventDefault();
 
-    const fullName = nameRef.current.value;
-    const checked = checkRef.current.checked;
-
-    console.log(fullName, checked);
+    const isLoggedIn = GetItemFromLocalStorage("isLoggedIn");
+    if (isLoggedIn?.status !== "success") {
+      alert("Kindly login to continue");
+    } else {
+      // const fullName = nameRef.current.value;
+      // const checked = checkRef.current.checked;
+    }
   };
 
   return (
@@ -54,7 +58,7 @@ const Attendance = () => {
           </button>
         </form>
         <div className="error hidden">
-          An error occured{" "}
+          An error occured
           <span>
             <button className="close__modal">
               <ion-icon className="modal-control" name="close"></ion-icon>

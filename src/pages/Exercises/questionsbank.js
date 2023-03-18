@@ -7,7 +7,7 @@ const allQuestions = {
         answer: "Hyper text markup Language",
         options: [
           "Hyper text Marked Language",
-          "Hyper text markup Language ",
+          "Hyper text markup Language",
           "Hyper text markdown Language",
           "Hyping text markup Language",
         ],
@@ -18,7 +18,7 @@ const allQuestions = {
         answer: "Hyper text markup Language",
         options: [
           "Hyper text Marked Language",
-          "Hyper text markup Language ",
+          "Hyper text markup Language",
           "Hyper text markdown Language",
           "Hyping text markup Language",
         ],

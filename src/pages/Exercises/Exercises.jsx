@@ -9,7 +9,7 @@ import { getQuestions } from "./questionsbank";
 
 const Exercise = () => {
   const [allAnswers, setAnswers] = useState([]);
-  const [submitted, setSubmitted] = useState(false);
+  // const [submitted, setSubmitted] = useState(false);
   const [totalScore, setTotalScore] = useState(0);
   const [showScore, setshowScore] = useState(false);
   const navigate = useNavigate();
@@ -24,12 +24,26 @@ const Exercise = () => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    setSubmitted(true);
     setshowScore(true);
+
+    allAnswers.forEach((answer) => {
+      if (answer.correctAnswer.trim() === answer?.option.trim()) {
+        setTotalScore((prev) => {
+          return (prev = prev + 1);
+        });
+        answer.showCorrectAnswer = false;
+      } else {
+        answer.showCorrectAnswer = true;
+      }
+    });
   };
 
-  const answerHandler = (id, option) => {
-    console.log(allAnswers, id, option);
+  const findQuestion = (id) => {
+    const questionAnswer = allAnswers?.find((answer) => answer.id === id);
+    return questionAnswer.showCorrectAnswer;
+  };
+
+  const answerHandler = (id, option, correctAnswer) => {
     const existingQuestion = allAnswers?.filter((ans) => {
       return ans.id === id;
     });
@@ -37,23 +51,17 @@ const Exercise = () => {
       const filteredAnswers = allAnswers?.filter((ans) => {
         return ans.id !== id;
       });
-      setAnswers((prev) => [...filteredAnswers, { id, option }]);
+      setAnswers((prev) => [
+        ...filteredAnswers,
+        { id, option, correctAnswer, showCorrectAnswer: false },
+      ]);
     } else {
-      setAnswers((prev) => prev.push({ id, option }));
+      setAnswers((prev) =>
+        prev.push({ id, option, correctAnswer, showCorrectAnswer: false })
+      );
     }
   };
 
-  const findQuestion = (id, correctAnswer) => {
-    setSubmitted(false);
-    const questionAnswer = allAnswers?.find((answer) => answer.id === id);
-    console.log(questionAnswer, correctAnswer);
-    if (correctAnswer === questionAnswer?.option) {
-      setTotalScore((prev) => {
-        return (prev = prev + 1);
-      });
-    }
-    return correctAnswer === questionAnswer?.option;
-  };
   const retryHandler = () => {
     navigate(0);
   };
@@ -73,7 +81,12 @@ const Exercise = () => {
                   type="radio"
                   name={item.id}
                   value={item.options[0]}
-                  onChange={answerHandler.bind(null, item.id, item.options[0])}
+                  onChange={answerHandler.bind(
+                    null,
+                    item.id,
+                    item.options[0],
+                    item.answer
+                  )}
                 />
                 {item.options[0]}
               </label>
@@ -84,7 +97,12 @@ const Exercise = () => {
                   type="radio"
                   name={item.id}
                   value={item.options[1]}
-                  onChange={answerHandler.bind(null, item.id, item.options[1])}
+                  onChange={answerHandler.bind(
+                    null,
+                    item.id,
+                    item.options[1],
+                    item.answer
+                  )}
                 />
                 {item.options[1]}
               </label>
@@ -95,7 +113,12 @@ const Exercise = () => {
                   type="radio"
                   name={item.id}
                   value={item.options[2]}
-                  onChange={answerHandler.bind(null, item.id, item.options[2])}
+                  onChange={answerHandler.bind(
+                    null,
+                    item.id,
+                    item.options[2],
+                    item.answer
+                  )}
                 />
                 {item.options[2]}
               </label>
@@ -106,14 +129,19 @@ const Exercise = () => {
                   type="radio"
                   name={item.id}
                   value={item.options[3]}
-                  onChange={answerHandler.bind(null, item.id, item.options[3])}
+                  onChange={answerHandler.bind(
+                    null,
+                    item.id,
+                    item.options[3],
+                    item.answer
+                  )}
                 />
                 {item.options[3]}
               </label>
               <br />
             </div>
             <p>
-              {submitted === true && !findQuestion(item.id, item.answer) && (
+              {showScore === true && findQuestion(item.id) === true && (
                 <span>The correct answer is {item.answer}</span>
               )}
             </p>

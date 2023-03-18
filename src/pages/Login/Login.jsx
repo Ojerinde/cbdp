@@ -43,7 +43,7 @@ const Login = () => {
     <>
       <Navigation />
       <div className={classes.login} data-testid="login__page">
-        <h1 className={classes.h1}>sign in</h1>
+        <h1 className={classes.h1}>Sign in</h1>
         <Form onSubmit={signInHandler} isLoading={isLoading} error={error} />
       </div>
       <Footer />
