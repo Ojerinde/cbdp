@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 import Footer from "../../components/Footer/Footer";
 import Navigation from "../../components/Navigation/Navigation";
 import "./exercises.css";
@@ -9,7 +10,6 @@ import { getQuestions } from "./questionsbank";
 
 const Exercise = () => {
   const [allAnswers, setAnswers] = useState([]);
-  // const [submitted, setSubmitted] = useState(false);
   const [totalScore, setTotalScore] = useState(0);
   const [showScore, setshowScore] = useState(false);
   const navigate = useNavigate();
@@ -24,9 +24,17 @@ const Exercise = () => {
 
   const submitHandler = (event) => {
     event.preventDefault();
+    if (allAnswers.length === 0) {
+      return Swal.fire({
+        title: "No answer selected",
+        text: "You have not make any selection",
+        icon: "error",
+        confirmButtonText: "Back",
+      });
+    }
     setshowScore(true);
 
-    allAnswers.forEach((answer) => {
+    allAnswers?.forEach((answer) => {
       if (answer.correctAnswer.trim() === answer?.option.trim()) {
         setTotalScore((prev) => {
           return (prev = prev + 1);
@@ -40,7 +48,7 @@ const Exercise = () => {
 
   const findQuestion = (id) => {
     const questionAnswer = allAnswers?.find((answer) => answer.id === id);
-    return questionAnswer.showCorrectAnswer;
+    return questionAnswer?.showCorrectAnswer;
   };
 
   const answerHandler = (id, option, correctAnswer) => {
